@@ -21,5 +21,7 @@ class UsersTableSeeder extends Seeder
             'pekerjaan' => 'admin',
             'alamat' => 'admin',
         ]);
+
+        
     }
 }

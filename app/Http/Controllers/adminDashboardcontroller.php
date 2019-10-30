@@ -11,7 +11,7 @@ class adminDashboardcontroller extends Controller
 {
     public function index()
     {
-        if(Auth::user()->id == 2){
+        if(Auth::user()->role == 'admin'){
             $users = User::all();
         return view('dashboardAdmin')->with(compact('users'));
         }else{
