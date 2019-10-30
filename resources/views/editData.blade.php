@@ -1,75 +1,60 @@
-@extends('/layouts/app')
-@section('content')
+@extends('layouts.app')
 
-<div class="container-fluid">  
-    <!-- Page Heading -->
-    <h1 class="h3 mb-2 text-gray-800">Data Sapi</h1>
-    <!-- DataTales Example -->
-    <div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Tambah Data</h6>
-    </div>
-    
-    <div class="card-body">
-        <form class="user" method="post" action="" enctype="multipart/form-data">
-        @csrf
-        <select class="dropdown" name="SupportRenewMonth" id="SupportRenewMonth">
-            @foreach ($jenisSapi as $data)
-            @php
-                $value = $data->nama_jenis;
-                $output = str_replace('_', ' ', $value);
-            @endphp
-            <option value="12">{{$output}}</option>
-            @endforeach  
-                <option value="Other">Other</option>
-            </select>
-            <label labelfor="SupportRenewMonthManual" id="SupportRenewMonthManualLabel">Jenis Sapi : </label>
-            <input type="text" name="SupportRenewMonthManual" id="SupportRenewMonthManual">
-            <h6 class="m-3 font-weight-bold text-basic">Umur</h6>
-            <div class="form-group">
-                <input type="text" class="form-control form-control-user" name="Umur" placeholder="Umur">
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Edit Data</div>
+
+                <div class="card-body">
+                    <form method="POST" action="">
+                        @csrf
+
+                        <div class="form-group row">
+                            <label for="name" class="col-md-4 col-form-label text-md-right">Nama</label>
+
+                            <div class="col-md-6">
+                            <input id="name" type="text" class="form-control " name="name" value="{{$ubah->name}}" required autocomplete="name" >
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">Email</label>
+
+                            <div class="col-md-6">
+                            <input id="email" type="email" class="form-control" name="email" value="{{$ubah->email}}" required autocomplete="email">
+                            
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="pekerjaan" class="col-md-4 col-form-label text-md-right">Pekerjaan</label>
+
+                            <div class="col-md-6">
+                                <input id="pekerjaan" type="text" class="form-control " name="pekerjaan" value="{{$ubah->pekerjaan}}" required autocomplete="pekerjaan">
+
+                               
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="alamat" class="col-md-4 col-form-label text-md-right">Alamat</label>
+
+                            <div class="col-md-6">
+                            <input id="alamat" type="text" class="form-control" name="alamat" value="{{$ubah->alamat}}" required autocomplete="alamat">                   
+                            </div>
+                        </div>
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                   Simpan
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <h6 class="m-3 font-weight-bold text-basic">Jumlah</h6>
-            <div class="form-group">
-                <input type="text" class="form-control form-control-user" name="Jumlah" placeholder="Jumlah">
-            </div>
-            <h6 class="m-3 font-weight-bold text-basic">Deskripsi</h6>
-            <div class="form-group">
-                <textarea class="form-control form-control-user" name="description" placeholder="Deskripsi"></textarea>
-            </div>
-            <h6 class="m-3 font-weight-bold text-basic">Foto Sapi</h6>
-            <div class="form-group">
-                <input type="file" class="form-control" name="thumbnail" placeholder="Nama Destinasi">
-            </div>
-            <hr>
-            <button type="submit" class="btn btn-primary btn-user btn-block">Simpan</button>
-        </form>
-        <a href="" class="btn btn-default btn-user btn-block">Batal</a>
-        
-    </div>
+        </div>
     </div>
 </div>
-@endsection
-@section('js')
-    <script>
-   $(document).ready(function() {
-    $('#SupportRenewMonthManualLabel').hide();
-    $('#SupportRenewMonthManual').hide();
-    $('#SupportRenewMonthManual').val($('#SupportRenewMonth').val());
-    $('#SupportRenewMonth').change(function() {
-        var selectedItem = $("select option:selected").val();
-        if (selectedItem !== 'Other') {
-            $('#SupportRenewMonthManualLabel').hide();
-            $('#SupportRenewMonthManual').hide();
-            $('#SupportRenewMonthManual').val($('#SupportRenewMonth').val());
-        }
-        else
-        {
-            $('#SupportRenewMonthManualLabel').show();
-            $('#SupportRenewMonthManual').val('');
-            $('#SupportRenewMonthManual').show();
-        }
-    });
-});
-    </script>
 @endsection

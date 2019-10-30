@@ -18,9 +18,9 @@ class adminDashboardcontroller extends Controller
             return redirect('/home');
         }
     }
-    public function update($id){
+    public function pindah($id){
         $ubah = User::find($id);
-        return view('update', compact('ubah'));
+        return view('editData', compact('ubah'));
     }
     public function ubah(Request $request,$id){
        $ubah1 = user::find($id);

@@ -33,7 +33,7 @@
                     <td scope="row">{{$user -> pekerjaan}}</td>
                     <td scope="row">{{$user -> alamat}}</td>
                     <td>
-                     <a href= "/update/{{$user -> id}}" class="badge badge-success">Edit</a>
+                     <a href= "/pindah/{{$user -> id}}" class="badge badge-success">Edit</a>
                      <form method="post" action="/delete/{{$user -> id}}" class="d-inline">
                      @method('delete')
                      @csrf

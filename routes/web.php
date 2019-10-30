@@ -24,9 +24,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/update/{id}', 'adminDashboardController@update');
+Route::get('/pindah/{id}', 'adminDashboardController@pindah')->name('pindah.edit');
 
-Route::post('/update/{id}', 'adminDashboardController@ubah');
+Route::post('/pindah/{id}', 'adminDashboardController@ubah');
 
 Route::delete('/delete/{id}', 'adminDashboardController@destroy');
 
